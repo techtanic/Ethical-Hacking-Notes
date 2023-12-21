@@ -180,7 +180,7 @@
 - `tail <file>`: Print last 10 lines of a file.
 
 # System Hacking - SARVM
-
+ s
 ## Step 1: Find Target IP Address
 
 - Use `netdiscover` to discover the target IP address.
